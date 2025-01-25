@@ -106,27 +106,27 @@ p a:hover {
 <body>
     <div class="container">
         <h1>Register Account</h1>
-        <form method="POST" action="" id="registerForm">
+        <form method="POST" action="">
             {% csrf_token%}
             <div class="input-group">
                 <i class="icon">👤</i>
-                {{form.username}}
+               <input type="text" name="username" placeholder="Username" class="form-control">
             </div>
             <div class="input-group">
                 <i class="icon">📧</i>
-                {{form.email}}
+                <input type="email" name="email" placeholder="Email" class="form-control">
             </div>
             <div class="input-group">
                 <i class="icon">🔒</i>
-                {{form.password1}}
+                <input type="password" name="password1" placeholder="Password" class="form-control">
             </div>
             <div class="input-group">
                 <i class="icon">🔒</i>
-                {{form.password2}}
+                <input type="password" name="password2" placeholder="Confirm Password" class="form-control">
             </div>
             <button type="submit">Register Account</button>
         </form>
-        <p>Already have an account? <a href="#">Login</a></p>
+        <p>Already have an account? <a href="{%url 'login'%}">Login</a></p>
     </div>
 
     <script >
@@ -139,10 +139,7 @@ p a:hover {
         for(let field of form_fields){
             form_fields[field].className += "form-control";
         }
-        document.getElementById("registerForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    alert("Your account has been successfully registered!");
-});
+
 
     </script>
 </body>
