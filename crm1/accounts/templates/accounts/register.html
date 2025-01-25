@@ -1,0 +1,149 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Account</title>
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #dff6ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-group i.icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #888;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Register Account</h1>
+        <form method="POST" action="" id="registerForm">
+            {% csrf_token%}
+            <div class="input-group">
+                <i class="icon">👤</i>
+                {{form.username}}
+            </div>
+            <div class="input-group">
+                <i class="icon">📧</i>
+                {{form.email}}
+            </div>
+            <div class="input-group">
+                <i class="icon">🔒</i>
+                {{form.password1}}
+            </div>
+            <div class="input-group">
+                <i class="icon">🔒</i>
+                {{form.password2}}
+            </div>
+            <button type="submit">Register Account</button>
+        </form>
+        <p>Already have an account? <a href="#">Login</a></p>
+    </div>
+
+    <script >
+        let form_fields = document.getElementsByTagName("input");
+        form_fields[1].placeholder = "Username";
+        form_fields[2].placeholder = "Email";
+        form_fields[3].placeholder = "Password";
+        form_fields[4].placeholder = "Confirm Password";
+
+        for(let field of form_fields){
+            form_fields[field].className += "form-control";
+        }
+        document.getElementById("registerForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    alert("Your account has been successfully registered!");
+});
+
+    </script>
+</body>
+</html>
